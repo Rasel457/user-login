@@ -6,8 +6,8 @@
 <body>
 	<?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         if(empty ($_POST['fname']) && empty($_POST['lname'])&&empty($_POST['gender'])&&empty($_POST['email'])&&empty($_POST['uname'])&&empty($_POST['password'])&&empty($_POST['recemail'])){
-         	echo "fill up the from properly";
+         if(empty ($_POST['fname']) || empty($_POST['lname'])||empty($_POST['gender'])||empty($_POST['email'])||empty($_POST['uname'])||empty($_POST['password'])||empty($_POST['recemail'])){
+         	echo "<h2>Fill up the from properly</h2>";
          }
          else{
          	$firstName=$_POST['fname'];
@@ -26,6 +26,7 @@
 	        echo"Recovary Email:  $Remail" ."<br>";
 	        echo "<h2>Successful</h2> ";
 	        $W=fopen("Information.txt","a");
+	        //fwrite($W,$firstName .",".$lastName.",".$gender .",". $email .",".$user.",".$password.",".$Remail);
 	        fwrite($W,$firstName ."\n");
 	        fwrite($W,$lastName ."\n");
             fwrite($W,$gender ."\n");
